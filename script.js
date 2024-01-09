@@ -1,18 +1,12 @@
+const options = key;
 
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NTkwZTU5Y2QwNDA0YTk4YTY3NDkzNGExOWRhNWI4MSIsInN1YiI6IjY1OTNiYjdiZWJiOTlkNWVjMjlmMTRhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vADdoK7Fidoz2FVaAlVGN-Kz7IhqoGfGnVqo3UIQGV0'
-    }
-};
 
 fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
     .then(response => response.json())
     .then(data => {
         const cardAll = document.getElementById('movie-card1');
 
-        data.results.forEach((row, index) => {
+        data.results.forEach((row,index) => {
             const poster = row.poster_path;
             const title = row.title;
             const vote = row.vote_average;
