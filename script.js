@@ -12,20 +12,23 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
     .then(data => {
         const cardAll = document.getElementById('movie-card1');
 
-        data.results.forEach((row,index) => {
+        data.results.forEach((row, index) => {
             const poster = row.poster_path;
             const title = row.title;
             const vote = row.vote_average;
             const view = row.overview;
+            // movieid 변수할당으로 문제해결
+            const movieId = row.id;
 
             // 카드 컨테이너 생성
             const cardContainer = document.createElement('div');
             cardContainer.classList.add('card-container');
-            
-            // alert값 넣는것을 잘 모르겠습니다;
-            // cardContainer.addEventListener('click', () => {
-            //     alert(`클릭한 카드의 ID: ${index + 1}`);
-            // });
+            // 수정한 id값 출력alert창표시
+            cardContainer.addEventListener('click', () => {
+                alert(`클릭한 영화의 ID: ${movieId}`);
+            });
+
+
 
             // 이미지 컨테이너 생성
             const imageContainer = document.createElement('div');
@@ -66,5 +69,6 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
     .catch(error => {
         console.error('API에서 데이터를 가져오는 중 에러 발생:', error);
     });
+
 
 
